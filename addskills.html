@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap - Exchange Your Skills</title>
+  <link rel="stylesheet" href="catch.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #001f3f, #0074D9);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+    }
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: #FFDC00;
+      color: #001f3f;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .search-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+    .search-form {
+      display: flex;
+      gap: 1rem;
+    }
+    .search-input {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: none;
+    }
+    .filter-buttons {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .filter-btn {
+      background: #0074D9;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #FFDC00;
+      color: #001f3f;
+    }
+    .skills-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .skill-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .user-info {
+      margin-top: 0.5rem;
+    }
+    .stars {
+      display: flex;
+      gap: 5px;
+      color: gold;
+      margin-top: 5px;
+      pointer-events: none;
+    }
+    .star {
+      font-size: 18px;
+    }
+    .star.active {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">SkillSwap</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">My Skills</a></li>
+      </ul>
+      <div class="auth-buttons">
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>Exchange Skills, Expand Horizons</h1>
+      <p>Connect with people who want to learn what you know, and learn what you want to know</p>
+      <button class="btn btn-primary" onclick="showModal('postSkillModal')">Post Your Skill</button>
+    </section>
+
+    <section class="search-section container">
+      <div class="search-form">
+        <input type="text" class="search-input" placeholder="What skill do you want to learn?" id="searchInput" />
+        <button class="btn btn-primary" onclick="searchSkills()">Search</button>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">All Skills</button>
+        <button class="filter-btn" data-category="programming">Programming</button>
+        <button class="filter-btn" data-category="design">Design</button>
+        <button class="filter-btn" data-category="music">Music</button>
+        <button class="filter-btn" data-category="language">Languages</button>
+        <button class="filter-btn" data-category="cooking">Cooking</button>
+        <button class="filter-btn" data-category="fitness">Fitness</button>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    const skills = [
+      { title: 'JavaScript', user: 'Aditi Sharma', rating: 4, category: 'programming' },
+      { title: 'Photoshop', user: 'Rahul Mehta', rating: 3, category: 'design' },
+      { title: 'Guitar Basics', user: 'Sakshi Sharma', rating: 5, category: 'music' },
+      { title: 'French Conversation', user: 'Nisha Patel', rating: 2, category: 'language' },
+      { title: 'Italian Cooking', user: 'Elena John', rating: 4, category: 'cooking' },
+      { title: 'Yoga for Beginners', user: 'Shivam Sharma', rating: 5, category: 'fitness' }
+    ];
+
+    const skillsGrid = document.getElementById('skillsGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function renderSkills(filter = 'all') {
+      skillsGrid.innerHTML = '';
+      const filtered = filter === 'all' ? skills : skills.filter(skill => skill.category === filter);
+      filtered.forEach((skill, index) => {
+        const card = document.createElement('div');
+        card.className = 'skill-card';
+
+        let starsHTML = '<div class="stars">';
+        for (let i = 1; i <= 5; i++) {
+          starsHTML += `<span class="star ${i <= skill.rating ? 'active' : ''}">&#9733;</span>`;
+        }
+        starsHTML += '</div>';
+
+        card.innerHTML = `
+          <div class="skill-title">${skill.title}</div>
+          <div class="user-info">${skill.user}</div>
+          ${starsHTML}
+        `;
+
+        skillsGrid.appendChild(card);
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        renderSkills(category);
+      });
+    });
+
+    renderSkills();
+  </script>
+
+  <script src="throw.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Rating</title>
+   <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Feedback & Rating</h1>
+            <p>Share your thoughts and help us improve together</p>
+        </div>
+
+        <div class="feedback-grid">
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">JS</div>
+                    <div class="person-info">
+                        <h3>John Smith</h3>
+                        <p>Project Manager</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Overall Performance</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Share your feedback about John's work performance, communication, and collaboration..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">RB</div>
+                    <div class="person-info">
+                        <h3>Poonam Roy</h3>
+                        <p>Software Developer</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Technical Skills</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Provide feedback on Poonam's coding skills, problem-solving abilities, and technical contributions..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">MJ</div>
+                    <div class="person-info">
+                        <h3>Aditi Sharma</h3>
+                        <p>UX Designer</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Design & Creativity</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Share your thoughts on Aditi's design skills, creativity, and user experience contributions..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">RB</div>
+                    <div class="person-info">
+                        <h3>Robert Brown</h3>
+                        <p>Software Developer</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Technical Skills</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Provide feedback on Robert's coding skills, problem-solving abilities, and technical contributions..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">SK</div>
+                    <div class="person-info">
+                        <h3>Rahul Mehta</h3>
+                        <p>Marketing Specialist</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Communication & Strategy</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Share your thoughts on Rahul's marketing strategies, communication skills, and campaign effectiveness..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+            <div class="feedback-card">
+                <div class="card-header">
+                    <div class="avatar">SK</div>
+                    <div class="person-info">
+                        <h3>Sarah kim</h3>
+                        <p>Marketing Specialist</p>
+                    </div>
+                </div>
+                <div class="rating-section">
+                    <label class="rating-label">Communication & Strategy</label>
+                    <div class="stars" data-rating="0">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <textarea class="feedback-input" placeholder="Share your thoughts on Sarah's marketing strategies, communication skills, and campaign effectiveness..."></textarea>
+                <button class="submit-btn" onclick="submitFeedback(this)">Submit Feedback</button>
+                <div class="success-message">Thank you! Your feedback has been submitted successfully.</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="feedback.js">
+    </script>
+</body>
+</html>
